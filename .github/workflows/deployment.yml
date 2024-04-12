@@ -1,4 +1,4 @@
-name: CI/CD
+name: Deploy to Test server
 on:
   push:
     branches:
@@ -45,4 +45,17 @@ jobs:
   
       - name: Execute commands on the server
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'cd ~/src && npm install && pm2 start ecosystem.config.js'
+          ssh -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} << EOF
+
+            export NVM_DIR="\$HOME/.nvm"
+            [ -s "\$NVM_DIR/nvm.sh" ] && \. "\$NVM_DIR/nvm.sh"
+            [ -s "\$NVM_DIR/bash_completion" ] && \. "\$NVM_DIR/bash_completion"
+
+            cd ~/src
+
+            nvm use || nvm install
+
+            npm install
+
+            pm2 start ecosystem.config.js
+          EOF
