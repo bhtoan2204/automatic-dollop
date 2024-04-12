@@ -30,6 +30,7 @@ jobs:
   deploy:
     needs: build-and-test
     runs-on: ubuntu-latest
+    environment: main_env
     steps:
       - uses: actions/checkout@v2
       - name: Install SSH client
