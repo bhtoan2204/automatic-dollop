@@ -1,8 +1,7 @@
 module.exports = {
   apps : [{
     name      : 'backend-test',
-    script    : 'index.js',
-    instances : 'max',
+    script    : 'server.js',
     autorestart : true,
     watch       : false,
     env: {
