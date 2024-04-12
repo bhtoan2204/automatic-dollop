@@ -8,3 +8,11 @@ describe('GET /', () => {
     expect(response.text).toBe('Hello, World!');
   });
 });
+
+describe('GET /goodbye', () => {
+  it('should return Goodbye World with a status code of 200', async () => {
+    const response = await request(app).get('/goodbye');
+    expect(response.statusCode).toBe(200);
+    expect(response.text).toBe('Goodbye, World!');
+  });
+});
