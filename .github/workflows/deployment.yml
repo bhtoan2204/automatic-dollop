@@ -31,8 +31,9 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
+          cat ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          scp -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -r . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/src
+          scp -o StrictHostKeyChecking=no -r . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/src
   
       - name: Execute commands on the server
         run: |
