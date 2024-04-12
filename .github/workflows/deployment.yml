@@ -44,4 +44,4 @@ jobs:
   
       - name: Execute commands on the server
         run: |
-          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'cd ~/src && npm install && npm start'
+          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'cd ~/src && npm install && pm2 start ecosystem.config.js'
