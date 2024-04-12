@@ -32,8 +32,8 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          scp -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -r . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:/path/to/your/project
+          scp -P ${{ secrets.PORT }} -o StrictHostKeyChecking=no -r . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:~/src
   
       - name: Execute commands on the server
         run: |
-          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'cd /path/to/your/project && npm install && npm start'
+          ssh -p ${{ secrets.PORT }} -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ secrets.HOST }} 'cd ~/src && npm install && npm start'
