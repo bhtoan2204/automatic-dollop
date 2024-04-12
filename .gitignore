@@ -1,0 +1,36 @@
+# Đây là file .gitignore cho một ứng dụng Node.js
+
+# Thư mục node_modules chứa các gói npm đã cài đặt
+node_modules/
+
+# File log có thể chứa thông tin lỗi và các thông tin khác
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Thư mục chứa các file tạm thời có thể được tạo khi chạy các lệnh
+tmp/
+temp/
+
+# Thư mục chứa cấu hình môi trường, chẳng hạn như .env
+.env
+.env.local
+.env.*.local
+
+# File cấu hình cá nhân IDE hoặc trình soạn thảo
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Thư mục chứa output của bộ biên dịch hoặc quá trình build
+dist/
+build/
+coverage/
+
+# MacOS folder attribute
+.DS_Store
+
+# Thư mục chứa file build của Windows
+Thumbs.db
